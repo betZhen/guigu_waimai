@@ -29,7 +29,7 @@ export default function ajax(url, data={}, method="GET") {
       promise = axios.post(url, data)
     }
 
-    promise.then(response => {
+    promise.then(response => {  //成功的回调就是异步返回的response
       // 异步请求成功
       resolve(response.data)
     }).catch(error => {
@@ -37,3 +37,21 @@ export default function ajax(url, data={}, method="GET") {
     })
   })
 }
+
+
+/*
+return axios.get(url)
+return axios.post(url)    异步返回的是 response  调用resolve传的是response
+
+* 无论是get 或 post 它的返回值都是 promise 我们最终简化的是不用promise 用  async
+* const promise = ajax("/xxx") 这是promise返回的值
+*
+* const response = await ajax("/xxx")
+*const result = response.data
+* if(result.code===0){}
+*
+*
+*
+* 希望直接得到结果 resolve(response.data)
+* 那得到的就是 result
+* */

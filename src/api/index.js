@@ -10,8 +10,10 @@
 纬度          经度   (da)
 latitude      longitude
 * */
-const BASE = "api"  //根据config 里的index 配置代理  (解决跨域)
 import ajax from "./ajax"
-export const reqAddress = (longitude,latitude) => ajax(BASE+`position/${latitude},${longitude}`)
+
+const BASE = "/api"  //根据config 里的index 配置代理  (解决跨域)
+
+export const reqAddress = (longitude,latitude) => ajax(BASE+`/position/${latitude},${longitude}`)
 export const reqFoodCategorys = () => ajax(BASE+'/index_category')
-export const reqShops = (longitude,latitude)=>ajax(BASE+'shops',{latitude,longitude})
+export const reqShops = (longitude,latitude)=>ajax(BASE+'/shops',{latitude,longitude})

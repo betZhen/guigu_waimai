@@ -1,6 +1,6 @@
 <template>
   <section class="msite">
-    <TopHeader title="昌平区北七家宏福科技园(337省道北)">
+    <TopHeader :title="address.name">
       <span class="header_search" slot="left">
         <i class="iconfont icon-sousuo"></i>
       </span>
@@ -130,8 +130,15 @@
 
 <script>
   import ShopList from "../../components/ShopList/ShopList.vue"
-
+  import {mapState} from "vuex"
   export default {
+    mounted(){
+      this.$store.dispatch("getShops")  //不用接收参数 因为它第二个参数没有 (接口文档)
+      this.$store.dispatch("getCategorys")
+    },
+    computed:{
+      ...mapState(["address"])
+    },
     components: {
       ShopList
     }
@@ -234,3 +241,9 @@
           line-height 20px
 
 </style>
+
+
+<!--
+可以在Msite里发请求 mounted
+因为商家列表是Msite 的子组件
+-->
