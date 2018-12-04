@@ -1,5 +1,5 @@
 <template>
-    <div>Profile</div>
+    <div>ShopCarts</div>
 </template>
 
 <script>
